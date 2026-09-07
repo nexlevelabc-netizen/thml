@@ -56,7 +56,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
     <div className="fixed inset-0 z-[60] bg-[#f7f5f0] overlay-enter overflow-y-auto">
       <div className="min-h-full flex flex-col px-6 md:px-8">
         <div className="flex items-center justify-between h-[92px] shrink-0">
-          <img src="/images/logo-horizontal.png" alt="THML" className="h-10 w-auto" />
+          <img src="/images/logo-horizontal.png" alt="THML" className="h-12 w-auto" />
           <button onClick={onClose} className="navlink">
             Close
           </button>

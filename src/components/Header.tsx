@@ -54,11 +54,11 @@ export default function Header({ onSearch }: { onSearch: () => void }) {
         <div
           className={`transition-all duration-500 ${
             scrolled ? 'bg-[#f7f5f0]/95 backdrop-blur-sm border-b border-[#dcd8cd]' : 'bg-transparent border-b border-transparent'
-          }`}
+          } max-xl:bg-[#f7f5f0] max-xl:border-[#dcd8cd]`}
         >
           <div className={`flex items-center justify-between px-6 md:px-8 transition-all duration-500 ${scrolled ? 'h-[68px]' : 'h-[92px]'}`}>
             <Link to="/" className="flex items-center shrink-0" aria-label="THML home">
-              <img src="/images/logo-horizontal.png" alt="Thames Housing Management Ltd" className={`w-auto transition-all duration-500 ${scrolled ? 'h-8' : 'h-10'}`} />
+              <img src="/images/logo-horizontal.png" alt="Thames Housing Management Ltd" className={`w-auto transition-all duration-500 ${scrolled ? 'h-9 md:h-10' : 'h-11 md:h-14'}`} />
             </Link>
 
             {/* desktop nav */}
