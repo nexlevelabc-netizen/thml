@@ -41,7 +41,13 @@ export function ImgReveal({ src, alt, className = '', imgClassName = '' }: { src
       { threshold: 0.15 }
     )
     obs.observe(el)
-    return () => obs.disconnect()
+    // Safety net: if the observer never fires (timing, background tab, older
+    // browser), reveal the image anyway rather than leaving it clipped away.
+    const fallback = window.setTimeout(() => setInView(true), 1800)
+    return () => {
+      obs.disconnect()
+      window.clearTimeout(fallback)
+    }
   }, [])
   return (
     <div ref={ref} className={className}>
