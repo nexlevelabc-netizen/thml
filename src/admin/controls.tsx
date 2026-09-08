@@ -120,6 +120,7 @@ export function FilePicker({
 }) {
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState('')
+  const presign = trpc.content.createUploadUrl.useMutation()
 
   async function handle(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -127,14 +128,28 @@ export function FilePicker({
     setBusy(true)
     setErr('')
     try {
-      const fd = new FormData()
-      fd.append('file', file)
-      const res = await fetch('/api/upload', { method: 'POST', body: fd })
-      if (!res.ok) {
-        const j = await res.json().catch(() => ({}))
-        throw new Error(j.error || `Upload failed (${res.status})`)
+      const plan = await presign.mutateAsync({
+        fileName: file.name,
+        contentType: file.type || 'application/octet-stream',
+      })
+      if (plan.mode === 's3') {
+        const put = await fetch(plan.uploadUrl, {
+          method: 'PUT',
+          body: file,
+          headers: { 'Content-Type': file.type || 'application/octet-stream' },
+        })
+        if (!put.ok) throw new Error(`Upload failed (${put.status})`)
+        onUploaded({ url: plan.publicUrl, fileName: plan.fileName, size: file.size, mime: file.type })
+      } else {
+        const fd = new FormData()
+        fd.append('file', file)
+        const res = await fetch('/api/upload', { method: 'POST', body: fd })
+        if (!res.ok) {
+          const j = await res.json().catch(() => ({}))
+          throw new Error(j.error || `Upload failed (${res.status})`)
+        }
+        onUploaded((await res.json()) as Uploaded)
       }
-      onUploaded((await res.json()) as Uploaded)
     } catch (ex) {
       setErr(ex instanceof Error ? ex.message : 'Upload failed')
     } finally {

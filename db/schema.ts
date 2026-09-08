@@ -1,20 +1,24 @@
 import {
-  mysqlTable,
-  mysqlEnum,
+  pgTable,
+  pgEnum,
   serial,
   varchar,
   text,
   timestamp,
-  bigint,
-} from "drizzle-orm/mysql-core";
+  integer,
+} from "drizzle-orm/pg-core";
 
-export const users = mysqlTable("users", {
+export const roleEnum = pgEnum("role", ["user", "admin"]);
+export const publishedEnum = pgEnum("published", ["draft", "live"]);
+export const mediaKindEnum = pgEnum("media_kind", ["image", "video"]);
+
+export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   unionId: varchar("unionId", { length: 255 }).notNull().unique(),
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 320 }),
   avatar: text("avatar"),
-  role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
+  role: roleEnum("role").default("user").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt")
     .defaultNow()
@@ -26,7 +30,7 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-export const jobs = mysqlTable("jobs", {
+export const jobs = pgTable("jobs", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
@@ -37,13 +41,13 @@ export const jobs = mysqlTable("jobs", {
   overview: text("overview"),
   responsibilities: text("responsibilities"),
   requirements: text("requirements"),
-  published: mysqlEnum("published", ["draft", "live"]).default("draft").notNull(),
+  published: publishedEnum("published").default("draft").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().notNull().$onUpdate(() => new Date()),
 });
 export type Job = typeof jobs.$inferSelect;
 
-export const news = mysqlTable("news", {
+export const news = pgTable("news", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
@@ -52,13 +56,13 @@ export const news = mysqlTable("news", {
   excerpt: text("excerpt").notNull(),
   body: text("body"),
   imageUrl: text("imageUrl"),
-  published: mysqlEnum("published", ["draft", "live"]).default("draft").notNull(),
+  published: publishedEnum("published").default("draft").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().notNull().$onUpdate(() => new Date()),
 });
 export type NewsItem = typeof news.$inferSelect;
 
-export const documents = mysqlTable("documents", {
+export const documents = pgTable("documents", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   category: varchar("category", { length: 120 }).notNull(),
@@ -70,40 +74,27 @@ export const documents = mysqlTable("documents", {
 });
 export type Document = typeof documents.$inferSelect;
 
-export const events = mysqlTable("events", {
+export const events = pgTable("events", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   date: varchar("date", { length: 60 }).notNull(),
   time: varchar("time", { length: 60 }),
   location: varchar("location", { length: 255 }),
   description: text("description"),
-  published: mysqlEnum("published", ["draft", "live"]).default("draft").notNull(),
+  published: publishedEnum("published").default("draft").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().notNull().$onUpdate(() => new Date()),
 });
 export type Event = typeof events.$inferSelect;
 
-export const media = mysqlTable("media", {
+export const media = pgTable("media", {
   id: serial("id").primaryKey(),
-  kind: mysqlEnum("kind", ["image", "video"]).notNull(),
+  kind: mediaKindEnum("kind").notNull(),
   title: varchar("title", { length: 255 }).notNull(),
   url: text("url").notNull(),
   mime: varchar("mime", { length: 120 }),
   sizeBytes: varchar("sizeBytes", { length: 40 }),
-  eventId: bigint("eventId", { mode: "number", unsigned: true }),
+  eventId: integer("eventId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Media = typeof media.$inferSelect;
-
-// (content tables above) See docs/Database.md for schema examples and patterns.
-//
-// Example:
-// export const posts = mysqlTable("posts", {
-//   id: serial("id").primaryKey(),
-//   title: varchar("title", { length: 255 }).notNull(),
-//   content: text("content"),
-//   createdAt: timestamp("created_at").notNull().defaultNow(),
-// });
-//
-// Note: FK columns referencing a serial() PK must use:
-//   bigint("columnName", { mode: "number", unsigned: true }).notNull()

@@ -39,3 +39,6 @@ build/
 # Test coverage
 coverage/
 .nyc_output/
+
+# Uploaded media (S3 in production)
+public/uploads/

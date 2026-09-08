@@ -3,6 +3,7 @@ import { eq, desc, isNotNull } from "drizzle-orm";
 import { createRouter, publicQuery, adminQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { jobs, news, documents, events, media } from "@db/schema";
+import { s3Enabled, safeExtension, createPresignedUpload, deleteByPublicUrl } from "./storage";
 
 const published = z.enum(["draft", "live"]);
 
@@ -93,7 +94,7 @@ export const contentRouter = createRouter({
 
   // ------- jobs -------
   createJob: adminQuery.input(jobInput).mutation(async ({ input }) => {
-    const [{ id }] = await getDb().insert(jobs).values({ ...input, slug: slugify(input.title) }).$returningId();
+    const [{ id }] = await getDb().insert(jobs).values({ ...input, slug: slugify(input.title) }).returning({ id: jobs.id });
     return { id };
   }),
   updateJob: adminQuery.input(jobInput.extend({ id: z.number() })).mutation(async ({ input }) => {
@@ -106,7 +107,7 @@ export const contentRouter = createRouter({
 
   // ------- news -------
   createNews: adminQuery.input(newsInput).mutation(async ({ input }) => {
-    const [{ id }] = await getDb().insert(news).values({ ...input, slug: slugify(input.title) }).$returningId();
+    const [{ id }] = await getDb().insert(news).values({ ...input, slug: slugify(input.title) }).returning({ id: news.id });
     return { id };
   }),
   updateNews: adminQuery.input(newsInput.extend({ id: z.number() })).mutation(async ({ input }) => {
@@ -117,9 +118,21 @@ export const contentRouter = createRouter({
     await getDb().delete(news).where(eq(news.id, input.id));
   }),
 
+  // ------- uploads -------
+  // Returns a presigned S3 URL when S3 is configured, otherwise tells the
+  // client to fall back to the local /api/upload endpoint.
+  createUploadUrl: adminQuery
+    .input(z.object({ fileName: z.string().min(1), contentType: z.string().min(1) }))
+    .mutation(async ({ input }) => {
+      if (!s3Enabled()) return { mode: "local" as const };
+      const ext = safeExtension(input.fileName);
+      const { uploadUrl, publicUrl, key } = await createPresignedUpload(ext, input.contentType);
+      return { mode: "s3" as const, uploadUrl, publicUrl, fileName: key.split("/").pop()! };
+    }),
+
   // ------- documents -------
   createDocument: adminQuery.input(documentInput).mutation(async ({ input }) => {
-    const [{ id }] = await getDb().insert(documents).values(input).$returningId();
+    const [{ id }] = await getDb().insert(documents).values(input).returning({ id: documents.id });
     return { id };
   }),
   updateDocument: adminQuery.input(documentInput.extend({ id: z.number() })).mutation(async ({ input }) => {
@@ -127,12 +140,14 @@ export const contentRouter = createRouter({
     await getDb().update(documents).set(data).where(eq(documents.id, id));
   }),
   deleteDocument: adminQuery.input(z.object({ id: z.number() })).mutation(async ({ input }) => {
+    const [row] = await getDb().select().from(documents).where(eq(documents.id, input.id));
+    if (row) await deleteByPublicUrl(row.fileUrl);
     await getDb().delete(documents).where(eq(documents.id, input.id));
   }),
 
   // ------- events -------
   createEvent: adminQuery.input(eventInput).mutation(async ({ input }) => {
-    const [{ id }] = await getDb().insert(events).values(input).$returningId();
+    const [{ id }] = await getDb().insert(events).values(input).returning({ id: events.id });
     return { id };
   }),
   updateEvent: adminQuery.input(eventInput.extend({ id: z.number() })).mutation(async ({ input }) => {
@@ -145,10 +160,12 @@ export const contentRouter = createRouter({
 
   // ------- media -------
   createMedia: adminQuery.input(mediaInput).mutation(async ({ input }) => {
-    const [{ id }] = await getDb().insert(media).values(input).$returningId();
+    const [{ id }] = await getDb().insert(media).values(input).returning({ id: media.id });
     return { id };
   }),
   deleteMedia: adminQuery.input(z.object({ id: z.number() })).mutation(async ({ input }) => {
+    const [row] = await getDb().select().from(media).where(eq(media.id, input.id));
+    if (row) await deleteByPublicUrl(row.url);
     await getDb().delete(media).where(eq(media.id, input.id));
   }),
 });
