@@ -16,6 +16,8 @@ import Careers from './pages/Careers'
 import Vacancy from './pages/Vacancy'
 import Contact from './pages/Contact'
 import Quote from './pages/Quote'
+import Login from "./pages/Login"
+import NotFound from "./pages/NotFound"
 import { Accessibility, Complaints, Cookies, Privacy, Terms } from './pages/Legal'
 
 function ScrollToTop() {
@@ -54,6 +56,8 @@ export default function App() {
         <Route path="/complaints" element={<Complaints />} />
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="*" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
