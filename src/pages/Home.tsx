@@ -175,7 +175,7 @@ export default function Home() {
       </section>
 
       {/* ============ 5. GROUP RELATIONSHIP ============ */}
-      <section className="py-24 md:py-36 bg-[#141716] text-[#f7f5f0]">
+      <section className="py-24 md:py-36 bg-[#1a1a19] text-[#f7f5f0]">
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
           <Reveal>
             <Tag label="Our group" dark />
@@ -186,8 +186,8 @@ export default function Home() {
                 <h3 className="font-display font-extrabold uppercase leading-[1.02] tracking-[-0.02em] text-[30px] md:text-[48px]">
                   25th Avenue Housing Ltd
                 </h3>
-                <p className="mt-4 text-[14px] text-[#9aa19b]">{COMPANY.parentCharity}</p>
-                <p className="text-[14px] text-[#9aa19b]">{COMPANY.parentProvider}</p>
+                <p className="mt-4 text-[14px] text-[#a3a099]">{COMPANY.parentCharity}</p>
+                <p className="text-[14px] text-[#a3a099]">{COMPANY.parentProvider}</p>
               </div>
             </Reveal>
             <Reveal>
@@ -195,7 +195,7 @@ export default function Home() {
                 <h3 className="font-display font-extrabold uppercase leading-[1.02] tracking-[-0.02em] text-[26px] md:text-[40px] text-[#2b7a66]">
                   Thames Housing Management Ltd
                 </h3>
-                <p className="mt-4 text-[14px] text-[#9aa19b]">Wholly owned trading subsidiary</p>
+                <p className="mt-4 text-[14px] text-[#a3a099]">Wholly owned trading subsidiary</p>
               </div>
             </Reveal>
             <Reveal>
@@ -207,7 +207,7 @@ export default function Home() {
             </Reveal>
           </div>
           <Reveal>
-            <p className="mt-16 max-w-[640px] text-[15px] leading-[1.8] text-[#9aa19b]">
+            <p className="mt-16 max-w-[640px] text-[15px] leading-[1.8] text-[#a3a099]">
               THML’s activities support the wider objectives of the group while operating as a separate trading company.
             </p>
           </Reveal>

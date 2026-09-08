@@ -57,7 +57,7 @@ export function Tag({ label, dark = false }: { label: string; dark?: boolean }) 
   return (
     <div className={`tag ${dark ? 'on-dark' : ''}`}>
       <span className="tag-dot" />
-      <span className={`tag-label ${dark ? 'text-[#9aa19b]' : 'text-[#6e746f]'}`}>{label}</span>
+      <span className={`tag-label ${dark ? 'text-[#a3a099]' : 'text-[#6e746f]'}`}>{label}</span>
       <span className="tag-rule" />
     </div>
   )
@@ -139,7 +139,7 @@ export function PageHero({ tag, title, copy, image }: { tag: string; title: Reac
 /* ---------------- Final CTA block ---------------- */
 export function CtaBlock({ title = 'Let’s talk about your property requirements', copy = 'Whether you need property management, compliance support, maintenance or contractor services, our team is ready to help.' }: { title?: string; copy?: string }) {
   return (
-    <section className="bg-[#141716] text-[#f7f5f0]">
+    <section className="bg-[#1a1a19] text-[#f7f5f0]">
       <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto py-24 md:py-36">
         <Reveal>
           <Tag label="Get in touch" dark />
@@ -150,7 +150,7 @@ export function CtaBlock({ title = 'Let’s talk about your property requirement
           </h2>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-8 text-[16px] md:text-[18px] leading-[1.7] text-[#9aa19b] max-w-[640px]">{copy}</p>
+          <p className="mt-8 text-[16px] md:text-[18px] leading-[1.7] text-[#a3a099] max-w-[640px]">{copy}</p>
         </Reveal>
         <Reveal delay={220}>
           <div className="mt-12 flex flex-wrap gap-4">

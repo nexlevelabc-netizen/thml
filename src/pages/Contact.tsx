@@ -113,8 +113,8 @@ export default function Contact() {
       <section className="pb-24 md:pb-32">
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
           <Reveal>
-            <div className="bg-[#141716] text-[#f7f5f0] aspect-[16/7] flex flex-col justify-between p-8 md:p-14">
-              <p className="label text-[#9aa19b]">Find us</p>
+            <div className="bg-[#1a1a19] text-[#f7f5f0] aspect-[16/7] flex flex-col justify-between p-8 md:p-14">
+              <p className="label text-[#a3a099]">Find us</p>
               <div>
                 <p className="font-display font-extrabold uppercase leading-[1.02] tracking-[-0.02em] text-[28px] md:text-[44px]">
                   Wellington Street

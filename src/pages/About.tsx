@@ -111,7 +111,7 @@ export default function About() {
             {BOARD.map((b, i) => (
               <Reveal key={b.name} delay={i * 80}>
                 <div>
-                  <div className="aspect-[3/4] bg-[#141716] flex items-center justify-center">
+                  <div className="aspect-[3/4] bg-[#1a1a19] flex items-center justify-center">
                     <span className="font-display font-extrabold text-[64px] text-[#2b7a66] tracking-[-0.02em]">
                       {b.name.split(' ').map((n) => n[0]).join('')}
                     </span>

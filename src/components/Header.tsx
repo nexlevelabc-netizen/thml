@@ -35,13 +35,13 @@ export default function Header({ onSearch }: { onSearch: () => void }) {
       <header className="fixed top-0 left-0 right-0 z-50">
         {/* Layer 1 — relationship bar */}
         <div
-          className={`bg-[#141716] text-[#f7f5f0] overflow-hidden transition-all duration-500 ${
+          className={`bg-[#1a1a19] text-[#f7f5f0] overflow-hidden transition-all duration-500 ${
             scrolled ? 'max-h-0' : 'max-h-10'
           }`}
         >
           <div className="flex items-center justify-between px-6 md:px-8 h-10">
-            <span className="label text-[10px] text-[#9aa19b] hidden sm:block">Thames Housing Management Ltd</span>
-            <span className="label text-[10px] text-[#9aa19b] absolute left-1/2 -translate-x-1/2 hidden lg:block">
+            <span className="label text-[10px] text-[#a3a099] hidden sm:block">Thames Housing Management Ltd</span>
+            <span className="label text-[10px] text-[#a3a099] absolute left-1/2 -translate-x-1/2 hidden lg:block">
               A wholly owned trading subsidiary of 25th Avenue Housing Ltd
             </span>
             <a href={COMPANY.parentUrl} target="_blank" rel="noreferrer" className="label text-[10px] text-[#f7f5f0] hover:text-[#2b7a66] transition-colors ml-auto lg:ml-0">
@@ -143,7 +143,7 @@ export default function Header({ onSearch }: { onSearch: () => void }) {
 
       {/* Mobile full screen menu */}
       <div
-        className={`xl:hidden fixed inset-0 z-40 bg-[#141716] text-[#f7f5f0] transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 z-40 bg-[#1a1a19] text-[#f7f5f0] transition-all duration-500 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -153,7 +153,7 @@ export default function Header({ onSearch }: { onSearch: () => void }) {
               <Link
                 key={item.label}
                 to={item.to}
-                className={`flex items-baseline gap-5 py-4 border-b border-[#2c302e] transition-all duration-500 ${
+                className={`flex items-baseline gap-5 py-4 border-b border-[#33322e] transition-all duration-500 ${
                   menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
                 style={{ transitionDelay: `${80 + i * 45}ms` }}
@@ -177,9 +177,9 @@ export default function Header({ onSearch }: { onSearch: () => void }) {
               <TLink to="/request-a-quote" label="Request a Quote" className="text-[#f7f5f0]" />
               <TLink href={COMPANY.parentUrl} label="Visit 25th Avenue" className="text-[#f7f5f0]" />
             </div>
-            <div className="pt-6 border-t border-[#2c302e]">
-              <p className="text-[12px] text-[#9aa19b]">{COMPANY.companyNo}</p>
-              <p className="text-[12px] text-[#9aa19b] mt-1">Registered office: {COMPANY.office}</p>
+            <div className="pt-6 border-t border-[#33322e]">
+              <p className="text-[12px] text-[#a3a099]">{COMPANY.companyNo}</p>
+              <p className="text-[12px] text-[#a3a099] mt-1">Registered office: {COMPANY.office}</p>
             </div>
           </div>
         </div>
