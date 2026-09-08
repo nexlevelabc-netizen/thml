@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom'
 import { VACANCIES } from '../data/content'
 import { CtaBlock, ImgReveal, PageHero, Reveal, Tag, TLink } from '../components/ui'
+import { trpc } from '@/providers/trpc'
 
 export default function Careers() {
+  const jobsQ = trpc.content.jobsPublic.useQuery()
+  const vacancies =
+    jobsQ.data && jobsQ.data.length > 0
+      ? jobsQ.data.map((j) => ({
+          slug: j.slug,
+          title: j.title,
+          location: j.location,
+          type: j.type,
+          closing: j.closingDate,
+        }))
+      : VACANCIES
   return (
     <main>
       <PageHero tag="Careers" title="Careers at THML" copy="Explore current opportunities with THML." image="/images/team-office.jpg" />
@@ -40,7 +52,7 @@ export default function Careers() {
             <Tag label="Current vacancies" />
           </Reveal>
           <div className="mt-12">
-            {VACANCIES.map((v, i) => (
+            {vacancies.map((v, i) => (
               <Reveal key={v.slug} delay={i * 60}>
                 <Link
                   to={`/careers/${v.slug}`}

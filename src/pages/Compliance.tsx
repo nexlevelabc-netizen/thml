@@ -1,7 +1,10 @@
 import { ACCREDITATIONS } from '../data/content'
 import { CtaBlock, PageHero, Reveal, Tag, TLink } from '../components/ui'
+import { trpc } from '@/providers/trpc'
 
 export default function Compliance() {
+  const docsQ = trpc.content.documentsPublic.useQuery()
+  const docs = docsQ.data || []
   return (
     <main>
       <PageHero
@@ -37,6 +40,41 @@ export default function Compliance() {
           </div>
         </div>
       </section>
+
+      {docs.length > 0 && (
+        <section className="py-24 md:py-32">
+          <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
+            <Reveal>
+              <Tag label="Documents" />
+            </Reveal>
+            <div className="mt-12">
+              <div className="hidden md:grid grid-cols-12 gap-4 pb-5 label text-[#6e746f] border-b border-[#1c1f1d]">
+                <p className="col-span-5">Document</p>
+                <p className="col-span-3">Category</p>
+                <p className="col-span-2">File</p>
+                <p className="col-span-2 text-right">Download</p>
+              </div>
+              {docs.map((d, i) => (
+                <Reveal key={d.id} delay={i * 50}>
+                  <div className="grid grid-cols-12 gap-4 items-baseline py-7 border-b border-[#dcd8cd]">
+                    <p className="col-span-12 md:col-span-5 font-display font-bold text-[19px] md:text-[21px]">{d.title}</p>
+                    <p className="col-span-6 md:col-span-3 text-[14px] text-[#6e746f]">{d.category}</p>
+                    <p className="col-span-6 md:col-span-2 text-[14px] text-[#6e746f]">
+                      {d.fileName}
+                      {d.fileSize ? ` · ${d.fileSize}` : ''}
+                    </p>
+                    <p className="col-span-12 md:col-span-2 md:text-right">
+                      <a href={d.fileUrl} target="_blank" rel="noreferrer" download={d.fileName} className="tlink !text-[11px]">
+                        Download
+                      </a>
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="py-24 md:py-32 bg-[#ece9e1]">
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">

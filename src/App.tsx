@@ -16,8 +16,13 @@ import Careers from './pages/Careers'
 import Vacancy from './pages/Vacancy'
 import Contact from './pages/Contact'
 import Quote from './pages/Quote'
-import Login from "./pages/Login"
-import NotFound from "./pages/NotFound"
+import Login from './pages/Login'
+import NotFound from './pages/NotFound'
+import AdminJobs from './admin/AdminJobs'
+import AdminNews from './admin/AdminNews'
+import AdminDocuments from './admin/AdminDocuments'
+import AdminEvents from './admin/AdminEvents'
+import { AdminHome, AdminMedia } from './admin/AdminHome'
 import { Accessibility, Complaints, Cookies, Privacy, Terms } from './pages/Legal'
 
 function ScrollToTop() {
@@ -30,12 +35,14 @@ function ScrollToTop() {
 
 export default function App() {
   const [searchOpen, setSearchOpen] = useState(false)
+  const { pathname } = useLocation()
+  const bare = pathname.startsWith('/admin') || pathname === '/login'
 
   return (
     <div className="min-h-screen bg-[#f7f5f0] text-[#1c1f1d]">
       <ScrollToTop />
-      <Header onSearch={() => setSearchOpen(true)} />
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {!bare && <Header onSearch={() => setSearchOpen(true)} />}
+      {!bare && <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -55,11 +62,16 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/complaints" element={<Complaints />} />
         <Route path="/accessibility" element={<Accessibility />} />
-        <Route path="*" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/admin/jobs" element={<AdminJobs />} />
+        <Route path="/admin/news" element={<AdminNews />} />
+        <Route path="/admin/documents" element={<AdminDocuments />} />
+        <Route path="/admin/events" element={<AdminEvents />} />
+        <Route path="/admin/media" element={<AdminMedia />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {!bare && <Footer />}
     </div>
   )
 }

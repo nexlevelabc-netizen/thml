@@ -2,9 +2,22 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ACCREDITATIONS, COMPANY, NEWS, PROPERTIES, SERVICES } from '../data/content'
 import { Btn, CtaBlock, ImgReveal, Reveal, Tag, TLink } from '../components/ui'
+import { trpc } from '@/providers/trpc'
 
 export default function Home() {
   const [activeService, setActiveService] = useState(0)
+  const newsQ = trpc.content.newsPublic.useQuery()
+  const newsItems =
+    newsQ.data && newsQ.data.length > 0
+      ? newsQ.data.map((n) => ({
+          slug: n.slug,
+          title: n.title,
+          category: n.category,
+          date: n.date,
+          intro: n.excerpt,
+          image: n.imageUrl || '/images/ext-townhouses.jpg',
+        }))
+      : NEWS
 
   return (
     <main>
@@ -318,22 +331,22 @@ export default function Home() {
           </div>
           <div className="mt-14 grid grid-cols-1 lg:grid-cols-12 gap-12">
             <Reveal className="lg:col-span-7">
-              <Link to={`/news/${NEWS[0].slug}`} className="group block">
+              <Link to={`/news/${newsItems[0].slug}`} className="group block">
                 <div className="overflow-hidden aspect-[16/9] img-zoom">
-                  <img src={NEWS[0].image} alt="" className="w-full h-full object-cover" />
+                  <img src={newsItems[0].image} alt="" className="w-full h-full object-cover" />
                 </div>
                 <p className="label text-[#6e746f] mt-8">
-                  {NEWS[0].date} — {NEWS[0].category}
+                  {newsItems[0].date} — {newsItems[0].category}
                 </p>
                 <h3 className="font-display font-bold leading-[1.15] tracking-[-0.015em] mt-4 text-[24px] md:text-[34px] max-w-[640px] group-hover:text-[#1d6151] transition-colors duration-500">
-                  {NEWS[0].title}
+                  {newsItems[0].title}
                 </h3>
-                <p className="mt-5 text-[15px] leading-[1.75] text-[#4a4f4b] max-w-[580px]">{NEWS[0].intro}</p>
+                <p className="mt-5 text-[15px] leading-[1.75] text-[#4a4f4b] max-w-[580px]">{newsItems[0].intro}</p>
                 <p className="tlink mt-6 inline-block">Read article</p>
               </Link>
             </Reveal>
             <div className="lg:col-span-5 flex flex-col justify-center gap-12">
-              {NEWS.slice(1, 3).map((n, i) => (
+              {newsItems.slice(1, 3).map((n, i) => (
                 <Reveal key={n.slug} delay={i * 100}>
                   <Link to={`/news/${n.slug}`} className="group block border-t border-[#dcd8cd] pt-8">
                     <p className="label text-[#6e746f]">

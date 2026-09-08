@@ -1,11 +1,33 @@
 import { Link, useParams } from 'react-router-dom'
 import { NEWS } from '../data/content'
 import { CtaBlock, ImgReveal, Reveal, Tag } from '../components/ui'
+import { trpc } from '@/providers/trpc'
+
+function paras(text?: string | null) {
+  return (text || '')
+    .split(/\n{2,}|\r?\n\r?\n/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+}
 
 export default function Article() {
   const { slug } = useParams()
-  const article = NEWS.find((n) => n.slug === slug) || NEWS[0]
-  const related = NEWS.filter((n) => n.slug !== article.slug).slice(0, 2)
+  const newsQ = trpc.content.newsPublic.useQuery()
+  const items =
+    newsQ.data && newsQ.data.length > 0
+      ? newsQ.data.map((n) => ({
+          slug: n.slug,
+          title: n.title,
+          category: n.category,
+          date: n.date,
+          intro: n.excerpt,
+          image: n.imageUrl || '/images/ext-townhouses.jpg',
+          body: paras(n.body).length > 0 ? paras(n.body) : [n.excerpt],
+        }))
+      : NEWS
+
+  const article = items.find((n) => n.slug === slug) || items[0]
+  const related = items.filter((n) => n.slug !== article.slug).slice(0, 2)
 
   return (
     <main>
@@ -51,27 +73,29 @@ export default function Article() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-[#ece9e1]">
-        <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
-          <Reveal>
-            <Tag label="Related articles" />
-          </Reveal>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10">
-            {related.map((n, i) => (
-              <Reveal key={n.slug} delay={i * 80}>
-                <Link to={`/news/${n.slug}`} className="group block border-t border-[#1c1f1d] pt-7">
-                  <p className="label text-[#6e746f]">
-                    {n.date} — {n.category}
-                  </p>
-                  <h3 className="font-display font-bold leading-[1.2] mt-4 text-[20px] md:text-[24px] group-hover:text-[#1d6151] transition-colors">
-                    {n.title}
-                  </h3>
-                </Link>
-              </Reveal>
-            ))}
+      {related.length > 0 && (
+        <section className="py-20 md:py-28 bg-[#ece9e1]">
+          <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
+            <Reveal>
+              <Tag label="Related articles" />
+            </Reveal>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10">
+              {related.map((n, i) => (
+                <Reveal key={n.slug} delay={i * 80}>
+                  <Link to={`/news/${n.slug}`} className="group block border-t border-[#1c1f1d] pt-7">
+                    <p className="label text-[#6e746f]">
+                      {n.date} — {n.category}
+                    </p>
+                    <h3 className="font-display font-bold leading-[1.2] mt-4 text-[20px] md:text-[24px] group-hover:text-[#1d6151] transition-colors">
+                      {n.title}
+                    </h3>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CtaBlock />
     </main>
