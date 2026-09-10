@@ -4,7 +4,7 @@ import { Btn } from './ui'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a19] text-[#f7f5f0]">
+    <footer className="sheen bg-black text-[#f7f5f0]">
       {/* top row */}
       <div className="px-6 md:px-8 py-12 flex flex-col md:flex-row md:items-end justify-between gap-10 border-b border-[#33322e]">
         <div className="max-w-[420px]">

@@ -35,7 +35,7 @@ export default function Header({ onSearch }: { onSearch: () => void }) {
       <header className="fixed top-0 left-0 right-0 z-50">
         {/* Layer 1 — relationship bar */}
         <div
-          className={`bg-[#1a1a19] text-[#f7f5f0] overflow-hidden transition-all duration-500 ${
+          className={`sheen bg-black text-[#f7f5f0] overflow-hidden transition-all duration-500 ${
             scrolled ? 'max-h-0' : 'max-h-10'
           }`}
         >
@@ -143,7 +143,7 @@ export default function Header({ onSearch }: { onSearch: () => void }) {
 
       {/* Mobile full screen menu */}
       <div
-        className={`xl:hidden fixed inset-0 z-40 bg-[#1a1a19] text-[#f7f5f0] transition-all duration-500 ${
+        className={`xl:hidden fixed inset-0 z-40 sheen bg-black text-[#f7f5f0] transition-all duration-500 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
