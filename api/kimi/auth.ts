@@ -71,6 +71,15 @@ export async function authenticateRequest(headers: Headers) {
   return user;
 }
 
+export async function signAdminSession(userId: string, name?: string | null) {
+  await upsertUser({
+    unionId: userId,
+    name: name ?? undefined,
+    lastSignInAt: new Date(),
+  });
+  return signSessionToken({ unionId: userId, clientId: env.appId });
+}
+
 export function createOAuthCallbackHandler() {
   return async (c: Context) => {
     const code = c.req.query("code");
@@ -127,4 +136,4 @@ export function createOAuthCallbackHandler() {
   };
 }
 
-export { exchangeAuthCode, verifyAccessToken };
+export { exchangeAuthCode, verifyAccessToken, signSessionToken };

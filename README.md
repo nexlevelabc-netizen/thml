@@ -136,6 +136,8 @@ Create your local `.env` from `.env.example` and fill in the values
    | `KIMI_AUTH_URL` | from project maintainer |
    | `KIMI_OPEN_URL` | from project maintainer |
    | `OWNER_UNION_ID` | from project maintainer |
+   | `ADMIN_USERNAME` | admin panel username, e.g. `thmladmin` |
+   | `ADMIN_PASSWORD` | admin panel password (choose a strong one) |
 
 4. Click **Deploy**. First deploy takes a few minutes.
 
@@ -153,8 +155,8 @@ Or run the same two commands in the Render **Shell** tab of the web service.
 
 ### 6. Using the admin panel
 
-1. Visit `https://your-render-url/#/admin` and sign in with Kimi.
-2. The account matching `OWNER_UNION_ID` becomes the administrator.
+1. Visit `https://your-render-url/#/login` — the dedicated admin login page.
+2. Sign in with the `ADMIN_USERNAME` / `ADMIN_PASSWORD` you set in Render.
 3. Jobs, news and events have a **Draft / Live** switch — only Live items
    appear on the public site.
 4. Uploaded images and videos are stored in S3 and served from there;
