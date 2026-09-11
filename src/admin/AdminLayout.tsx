@@ -49,7 +49,8 @@ export default function AdminLayout({ title, action, children }: { title: string
       <div className="bg-[#1a1a19] text-[#f7f5f0]">
         <div className="max-w-[1560px] mx-auto px-6 md:px-8 h-14 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <span className="label text-[11px]">THML Admin</span>
+            <img src="/images/logo-full-white.png" alt="THML" className="h-7 w-auto" />
+            <span className="label text-[11px]">Admin</span>
             <span className="hidden md:inline w-px h-4 bg-[#33322e]" />
             <span className="hidden md:inline text-[12px] text-[#a3a099]">{user.name ?? user.email}</span>
           </div>

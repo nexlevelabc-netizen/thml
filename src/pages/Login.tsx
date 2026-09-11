@@ -39,7 +39,7 @@ export default function Login() {
       <div className="flex-1 flex items-center justify-center px-6 py-20">
         <div className="w-full max-w-[420px]">
           <div className="flex flex-col items-center text-center">
-            <img src="/images/logo-horizontal.png" alt="Thames Housing Management Ltd" className="h-16 w-auto" />
+            <img src="/images/logo-full-card.png" alt="Thames Housing Management Ltd" className="h-24 w-auto rounded-lg" />
             <p className="label text-[#a3a099] mt-10">Admin panel</p>
           </div>
 
