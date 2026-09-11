@@ -19,9 +19,14 @@ function LegalLayout({ tag, title, intro, sections }: { tag: string; title: stri
               </Reveal>
               <nav className="mt-8 flex flex-col gap-3">
                 {sections.map((s, i) => (
-                  <a key={s.title} href={`#s-${i}`} className="text-[13px] text-[#6e746f] hover:text-[#1c1f1d] transition-colors w-fit">
+                  <button
+                    key={s.title}
+                    type="button"
+                    onClick={() => document.getElementById(`s-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                    className="text-left text-[13px] text-[#6e746f] hover:text-[#1c1f1d] transition-colors w-fit"
+                  >
                     {String(i + 1).padStart(2, '0')} — {s.title}
-                  </a>
+                  </button>
                 ))}
               </nav>
             </div>
