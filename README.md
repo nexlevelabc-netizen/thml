@@ -161,6 +161,10 @@ Or run the same two commands in the Render **Shell** tab of the web service.
    appear on the public site.
 4. Uploaded images and videos are stored in S3 and served from there;
    nothing is lost when Render redeploys.
+5. **Settings** section lets you create additional admin users, reset their
+   passwords, disable accounts, and change your own password. The master
+   admin (`ADMIN_USERNAME` env var) always keeps access — use it to recover
+   if other accounts are ever locked out.
 
 ### Custom domain (optional)
 
