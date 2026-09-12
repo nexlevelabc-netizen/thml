@@ -23,6 +23,7 @@ import AdminNews from './admin/AdminNews'
 import AdminDocuments from './admin/AdminDocuments'
 import AdminEvents from './admin/AdminEvents'
 import { AdminHome, AdminMedia } from './admin/AdminHome'
+import { AdminSettings } from './admin/AdminSettings'
 import { Accessibility, Complaints, Cookies, Privacy, Terms } from './pages/Legal'
 
 function ScrollToTop() {
@@ -69,6 +70,7 @@ export default function App() {
         <Route path="/admin/documents" element={<AdminDocuments />} />
         <Route path="/admin/events" element={<AdminEvents />} />
         <Route path="/admin/media" element={<AdminMedia />} />
+        <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {!bare && <Footer />}

@@ -9,6 +9,7 @@ const SECTIONS = [
   { to: '/admin/documents', label: 'Documents' },
   { to: '/admin/events', label: 'Events' },
   { to: '/admin/media', label: 'Media Library' },
+  { to: '/admin/settings', label: 'Settings' },
 ]
 
 export default function AdminLayout({ title, action, children }: { title: string; action?: ReactNode; children: ReactNode }) {

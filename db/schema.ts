@@ -98,3 +98,16 @@ export const media = pgTable("media", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Media = typeof media.$inferSelect;
+
+// Admin users for the admin panel (separate from Kimi OAuth users)
+export const adminUsers = pgTable("admin_users", {
+  id: serial("id").primaryKey(),
+  username: varchar("username", { length: 100 }).notNull().unique(),
+  passwordHash: text("passwordHash").notNull(), // bcrypt hash
+  displayName: varchar("displayName", { length: 255 }),
+  isActive: integer("isActive").default(1).notNull(), // 1 = active, 0 = disabled
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().notNull().$onUpdate(() => new Date()),
+});
+export type AdminUser = typeof adminUsers.$inferSelect;
+export type InsertAdminUser = typeof adminUsers.$inferInsert;
