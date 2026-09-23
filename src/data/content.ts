@@ -1,16 +1,17 @@
 export const COMPANY = {
   name: 'Thames Housing Management Ltd',
   short: 'THML',
-  parent: '25th Avenue Housing Ltd',
-  parentUrl: 'https://www.25thavenue.org/',
+  parent: 'Twenty-Fifth Avenue Ltd',
+  parentUrl: 'https://www.25thavenue.org',
   parentCharity: 'Registered charity no. 1123817',
+  parentCompanyNo: 'company no. 6242442',
   parentProvider: 'Registered Provider of Social Housing no. 4652',
-  companyNo: 'Company No. 14823067',
-  office: 'Wellington Street, London SE18 6QF',
-  phone: '+44 (0)20 7946 0301',
-  email: 'enquiries@thml.org.uk',
+  companyNo: 'Company no. 14314177',
+  office: 'Thames House, 1st Floor, 3 Wellington Street, Woolwich, London SE18 6NY',
+  phone: '0208 854 8854',
+  email: 'info@thameshousingmanagement.co.uk',
   relationship:
-    'Thames Housing Management Ltd is a wholly owned trading subsidiary of 25th Avenue Housing Ltd.',
+    'Thames Housing Management Ltd is a wholly owned trading subsidiary of Twenty-Fifth Avenue Ltd, registered charity no. 1123817, company no. 6242442, Registered Provider of Social Housing no. 4652.',
 }
 
 export interface Service {

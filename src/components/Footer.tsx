@@ -16,9 +16,12 @@ export default function Footer() {
               Management Ltd
             </div>
           </div>
-          <p className="mt-6 text-[14px] leading-[1.7] text-[#a3a099]">
-            Professional property management, maintenance, compliance, refurbishment and lettings across London.
+          <p className="mt-6 text-[13px] leading-[1.7] text-[#a3a099]">
+            {COMPANY.relationship} {COMPANY.name} is registered in England and Wales, {COMPANY.companyNo}. Registered office: {COMPANY.office}.
           </p>
+          <a href={COMPANY.parentUrl} target="_blank" rel="noreferrer" className="tlink text-[13px] text-[#f7f5f0] w-fit mt-4 inline-block">
+            Visit our parent charity: www.25thavenue.org
+          </a>
         </div>
         <div className="flex flex-col items-start md:items-end gap-5">
           <div className="flex gap-4">
@@ -65,13 +68,18 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <p className="label text-[#6e746f]">Group</p>
-          <div className="mt-6 flex flex-col gap-3 text-[14px] text-[#c9cdc7]">
-            <p>{COMPANY.name}</p>
-            <p className="text-[#a3a099]">Wholly owned trading subsidiary of {COMPANY.parent}</p>
-            <a href={COMPANY.parentUrl} target="_blank" rel="noreferrer" className="tlink text-[#f7f5f0] w-fit mt-2">
-              Visit 25th Avenue
-            </a>
+          <p className="label text-[#6e746f]">Contact</p>
+          <div className="mt-6 flex flex-col gap-2 text-[13px] text-[#c9cdc7]">
+            <a href={`tel:${COMPANY.phone}`} className="hover:text-[#f7f5f0] transition-colors w-fit">{COMPANY.phone}</a>
+            <a href={`mailto:${COMPANY.email}`} className="hover:text-[#f7f5f0] transition-colors w-fit">{COMPANY.email}</a>
+            <p className="text-[#a3a099] text-[12px] leading-[1.6] mt-1">{COMPANY.office}</p>
+          </div>
+        </div>
+        <div>
+          <p className="label text-[#6e746f]">Documents</p>
+          <div className="mt-6 flex flex-col gap-3 text-[13px] text-[#c9cdc7]">
+            <p>Policies, certificates and reports are available through the documents section.</p>
+            <Link to="/compliance" className="tlink text-[#f7f5f0] w-fit mt-1">View documents</Link>
           </div>
         </div>
       </div>
@@ -85,18 +93,20 @@ export default function Footer() {
         </div>
         <div className="flex flex-wrap gap-x-7 gap-y-2">
           {[
-            ['Privacy', '/privacy'],
-            ['Cookies', '/cookies'],
-            ['Terms', '/terms'],
-            ['Complaints', '/complaints'],
-            ['Accessibility', '/accessibility'],
+            ['Privacy Policy', '/privacy'],
+            ['Cookie Policy', '/cookies'],
+            ['Cookie settings', '/cookies'],
+            ['Terms of Use', '/terms'],
+            ['Complaints Procedure', '/complaints'],
+            ['Modern Slavery Statement', '/modern-slavery'],
+            ['Accessibility Statement', '/accessibility'],
           ].map(([label, to]) => (
             <Link key={label} to={to} className="text-[11px] tracking-[0.14em] uppercase text-[#a3a099] hover:text-[#f7f5f0] transition-colors">
               {label}
             </Link>
           ))}
         </div>
-        <p className="text-[11px] tracking-[0.08em] text-[#6e746f] uppercase">© 2026 {COMPANY.name}</p>
+        <p className="text-[11px] tracking-[0.08em] text-[#6e746f] uppercase">© 2022 {COMPANY.name}. All rights reserved.</p>
       </div>
     </footer>
   )

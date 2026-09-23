@@ -24,7 +24,7 @@ import AdminDocuments from './admin/AdminDocuments'
 import AdminEvents from './admin/AdminEvents'
 import { AdminHome, AdminMedia } from './admin/AdminHome'
 import { AdminSettings } from './admin/AdminSettings'
-import { Accessibility, Complaints, Cookies, Privacy, Terms } from './pages/Legal'
+import { Accessibility, Complaints, Cookies, ModernSlavery, Privacy, Terms } from './pages/Legal'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -63,6 +63,7 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/complaints" element={<Complaints />} />
         <Route path="/accessibility" element={<Accessibility />} />
+        <Route path="/modern-slavery" element={<ModernSlavery />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/admin/jobs" element={<AdminJobs />} />

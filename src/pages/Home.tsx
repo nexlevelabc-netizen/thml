@@ -30,24 +30,24 @@ export default function Home() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="font-display font-extrabold uppercase leading-[0.95] tracking-[-0.025em] mt-10 text-[48px] md:text-[76px] lg:text-[92px]">
-                Property
+                Managing
                 <br />
-                Management<span className="text-[#1d6151]">.</span>
+                homes<span className="text-[#1d6151]">.</span>
                 <br />
-                Compliance<span className="text-[#1d6151]">.</span>
+                Maintaining
                 <br />
-                Delivery<span className="text-[#1d6151]">.</span>
+                standards<span className="text-[#1d6151]">.</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="mt-10 text-[17px] md:text-[19px] leading-[1.7] text-[#4a4f4b] max-w-[560px]">
-                Thames Housing Management Ltd provides professional property management, maintenance, compliance, refurbishment and
-                letting services.
+                Thames Housing Management Ltd provides property management, lettings and maintenance services across London.
+                We look after homes so that the people who live in them are safe, comfortable and well supported.
               </p>
             </Reveal>
             <Reveal delay={280}>
               <div className="mt-12 flex flex-wrap gap-4">
-                <Btn to="/services" label="Explore our services" />
+                <Btn to="/contact" label="Contact Us" />
                 <Btn to="/request-a-quote" label="Request a Quote" variant="outline" />
               </div>
             </Reveal>
@@ -70,16 +70,17 @@ export default function Home() {
             <Tag label="Thames Housing Management" />
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="font-display font-bold leading-[1.12] tracking-[-0.02em] mt-12 text-[30px] md:text-[46px] lg:text-[56px] max-w-[1150px]">
-              Professional property services built around safety, accountability and long term asset care.
+            <h2 className="font-display font-bold leading-[1.12] tracking-[-0.02em] mt-12 text-[30px] md:text-[42px] lg:text-[50px] max-w-[1150px]">
+              We are a property services company with a social purpose.
             </h2>
           </Reveal>
           <div className="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10">
             <Reveal delay={120} className="lg:col-span-6 lg:col-start-1">
-              <p className="text-[16px] md:text-[18px] leading-[1.8] text-[#4a4f4b] max-w-[620px]">
-                THML operates as the trading subsidiary of 25th Avenue Housing Ltd, delivering management, maintenance and
-                compliance services to residential buildings and portfolios across London. Our work is structured, documented and
-                accountable — every repair tracked, every certificate filed, every building inspected.
+              <p className="text-[16px] md:text-[17px] leading-[1.8] text-[#4a4f4b] max-w-[620px]">
+                Set up in 2022 as the trading subsidiary of the charity Twenty-Fifth Avenue Ltd, we manage and maintain
+                the charity's housing, own and let properties in our own name, and carry out repairs, compliance and
+                refurbishment work for other landlords and organisations. Every pound of profit we make goes back to
+                support the charity's work with people at risk of homelessness.
               </p>
             </Reveal>
             <Reveal delay={200} className="lg:col-span-4 lg:col-start-9 flex lg:justify-end items-start">
@@ -197,10 +198,11 @@ export default function Home() {
             <Reveal>
               <div>
                 <h3 className="font-display font-extrabold uppercase leading-[1.02] tracking-[-0.02em] text-[30px] md:text-[48px]">
-                  25th Avenue Housing Ltd
+                  Twenty-Fifth Avenue Ltd
                 </h3>
-                <p className="mt-4 text-[14px] text-[#a3a099]">{COMPANY.parentCharity}</p>
+                <p className="mt-4 text-[14px] text-[#a3a099]">{COMPANY.parentCharity} · {COMPANY.parentCompanyNo}</p>
                 <p className="text-[14px] text-[#a3a099]">{COMPANY.parentProvider}</p>
+                <p className="mt-4 text-[14px] text-[#a3a099] max-w-[560px]">Provides supported accommodation and practical support for people at risk of homelessness across London and Birmingham.</p>
               </div>
             </Reveal>
             <Reveal>
@@ -208,7 +210,8 @@ export default function Home() {
                 <h3 className="font-display font-extrabold uppercase leading-[1.02] tracking-[-0.02em] text-[26px] md:text-[40px] text-[#2b7a66]">
                   Thames Housing Management Ltd
                 </h3>
-                <p className="mt-4 text-[14px] text-[#a3a099]">Wholly owned trading subsidiary</p>
+                <p className="mt-4 text-[14px] text-[#a3a099]">{COMPANY.companyNo} · Wholly owned trading subsidiary</p>
+                <p className="mt-4 text-[14px] text-[#a3a099]">We manage, maintain and let property and deliver contractor services.</p>
               </div>
             </Reveal>
             <Reveal>
@@ -226,7 +229,10 @@ export default function Home() {
           </Reveal>
           <Reveal delay={80}>
             <div className="mt-10">
-              <Btn label="Visit 25th Avenue" variant="outline-paper" to={COMPANY.parentUrl} />
+              <div className="flex flex-wrap gap-4">
+              <Btn label="Learn about our group" variant="outline-paper" to="/about" />
+              <Btn label="Visit www.25thavenue.org" variant="outline-paper" to={COMPANY.parentUrl} />
+            </div>
             </div>
           </Reveal>
         </div>

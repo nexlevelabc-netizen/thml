@@ -6,8 +6,8 @@ export default function About() {
     <main>
       <PageHero
         tag="About THML"
-        title="A professional property company with a charitable purpose behind it"
-        copy="Thames Housing Management Ltd delivers property management, maintenance, compliance, refurbishment and lettings — operating commercially, with every surplus supporting the work of 25th Avenue Housing Ltd."
+        title="Property management, lettings and maintenance with a social purpose"
+        copy="Thames Housing Management Ltd is a property management, lettings and maintenance company based in Woolwich, south-east London."
         image="/images/ext-courtyard.jpg"
       />
 
@@ -30,8 +30,7 @@ export default function About() {
               <p className="mt-10 text-[16px] md:text-[17px] leading-[1.85] text-[#4a4f4b] max-w-[720px]">
                 We exist for a simple reason: well managed buildings protect people and protect value. Our teams coordinate
                 repairs, keep statutory compliance in date, plan maintenance around the lifecycle of each asset, and present every
-                property to a documented standard. As a trading subsidiary, our surpluses are directed to our parent charity,
-                25th Avenue Housing Ltd, supporting its wider housing objectives.
+                property to a documented standard. The profits we make are passed to Twenty-Fifth Avenue Ltd to support its charitable work.
               </p>
             </Reveal>
           </div>
@@ -66,13 +65,13 @@ export default function About() {
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Tag label="Our relationship with 25th Avenue" />
+              <Tag label="Our group" />
             </Reveal>
           </div>
           <div className="lg:col-span-8 max-w-[760px]">
             <Reveal delay={80}>
               <p className="text-[16px] md:text-[17px] leading-[1.85] text-[#4a4f4b]">
-                {COMPANY.name} is a wholly owned trading subsidiary of {COMPANY.parent}, a registered charity and Registered
+                {COMPANY.name} is a wholly owned trading subsidiary of {COMPANY.parent}, a registered charity (no. 1123817) and Registered
                 Provider of Social Housing. THML trades commercially and is managed by its own board, while its activities support
                 the charitable objectives of the group.
               </p>
@@ -94,7 +93,7 @@ export default function About() {
                 THML’s activities support the wider objectives of the group while operating as a separate trading company.
               </p>
               <div className="mt-8">
-                <Btn to={COMPANY.parentUrl} label="Visit 25th Avenue" variant="outline" />
+                <Btn to={COMPANY.parentUrl} label="Visit www.25thavenue.org" variant="outline" />
               </div>
             </Reveal>
           </div>
