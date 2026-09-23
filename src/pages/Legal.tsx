@@ -82,13 +82,12 @@ export function Cookies() {
     <LegalLayout
       tag="Legal"
       title="Cookies"
-      intro="How this website uses cookies and how you can manage your preferences."
+      intro="How this website uses cookies and how to manage them."
       sections={[
-        { title: 'What cookies are', body: ['Cookies are small text files placed on your device when you visit a website. They help the site function and can provide information about how the site is used.'] },
-        { title: 'Necessary cookies', body: ['These cookies are required for the website to operate, including navigation, forms and security features. They cannot be switched off.'] },
-        { title: 'Analytics cookies', body: ['We use privacy conscious analytics to understand aggregate usage of the site, such as pages visited. Analytics data is not used to identify individual visitors.'] },
-        { title: 'How to manage preferences', body: ['You can control or delete cookies through your browser settings at any time. Disabling cookies may affect how some parts of the site function.'] },
-        { title: 'Cookie settings', body: ['On your first visit you can choose whether to accept analytics cookies. Your preference is stored locally and can be changed by clearing your browser data.'] },
+        { title: 'What cookies are', body: ['Cookies are small text files placed on your device when you visit a website. They help the site work properly and tell us how it is being used.'] },
+        { title: 'Cookies we use', body: ['Essential cookies – needed for the site to work, such as remembering your cookie choices and protecting forms from spam. These cannot be switched off.', 'Analytics cookies (Google Analytics) – tell us which pages are visited and how people find the site, so we can improve it. Only set if you accept them.', 'Functional cookies – such as the embedded map on our Contact page, which may set cookies from Google. Only set if you accept them.'] },
+        { title: 'Managing cookies', body: ['When you first visit the site you will see a banner asking whether you accept non-essential cookies. You can change your choice at any time using the "Cookie settings" link in the footer. You can also block or delete cookies through your browser settings, although some parts of the site may not work properly if you do.'] },
+        { title: 'More information', body: ['For more about how we use personal data, see our Privacy Policy. For general information on cookies visit www.allaboutcookies.org.'] },
       ]}
     />
   )
@@ -99,15 +98,16 @@ export function Terms() {
     <LegalLayout
       tag="Legal"
       title="Terms"
-      intro="The terms that govern use of the Thames Housing Management Ltd website."
+      intro="Terms and conditions for using the Thames Housing Management Ltd website."
       sections={[
-        { title: 'Website use', body: ['This website is provided by ' + COMPANY.name + ' for information about our services, properties and company. By using the site you accept these terms.'] },
-        { title: 'Intellectual property', body: ['All content on this website, including text, imagery and branding, belongs to ' + COMPANY.name + ' or its licensors and may not be reproduced without permission.'] },
-        { title: 'Content accuracy', body: ['We take care to keep information accurate and current, including property availability and compliance documentation, but content is provided without warranty and may change at any time.'] },
-        { title: 'Links to third party sites', body: ['This site links to external websites, including the website of 25th Avenue Housing Ltd. We are not responsible for the content of third party sites.'] },
-        { title: 'Liability', body: ['Nothing in these terms excludes liability that cannot be excluded by law. Otherwise, we are not liable for loss arising from use of this website or reliance on its content.'] },
-        { title: 'Applicable law', body: ['These terms are governed by the laws of England and Wales, and the courts of England and Wales have exclusive jurisdiction.'] },
-        { title: 'Company details', body: [`${COMPANY.name}, ${COMPANY.companyNo}. Registered office: ${COMPANY.office}. ${COMPANY.relationship}`] },
+        { title: 'About these terms', body: ['This website is operated by ' + COMPANY.name + ', a company registered in England and Wales (company no. 14314177) with its registered office at ' + COMPANY.office + '. ' + COMPANY.name + ' is a wholly owned trading subsidiary of Twenty-Fifth Avenue Ltd (registered charity no. 1123817, company no. 6242442).', 'By using this website you agree to these terms. If you do not agree, please do not use the site.'] },
+        { title: 'Use of the site', body: ['You may use this site for lawful purposes only. You must not try to gain unauthorised access to it, introduce viruses or other harmful material, or use it in a way that damages or disrupts it.'] },
+        { title: 'Information on the site', body: ['We try to keep the information on this site accurate and up to date, but we do not guarantee that it is complete or error-free. Property listings, prices and availability may change without notice. Nothing on this site is an offer to let a property or to carry out work; any agreement is subject to a separate written contract.'] },
+        { title: 'Intellectual property', body: ['The content of this site, including text, images and logos, belongs to ' + COMPANY.name + ' or its licensors. You may view and print pages for personal use but must not copy or reuse content for commercial purposes without our written permission.'] },
+        { title: 'Links to other sites', body: ['This site contains links to other websites, including www.25thavenue.org. We are not responsible for the content or privacy practices of other sites.'] },
+        { title: 'Liability', body: ['We are not liable for any loss or damage arising from your use of this site or reliance on its content, except where the law does not allow us to exclude liability, such as for death or personal injury caused by our negligence.'] },
+        { title: 'Governing law', body: ['These terms are governed by the law of England and Wales, and the courts of England and Wales have exclusive jurisdiction.'] },
+        { title: 'Contact', body: ['Questions about these terms should be sent to ' + COMPANY.email + '.'] },
       ]}
     />
   )
@@ -137,13 +137,13 @@ export function Accessibility() {
     <LegalLayout
       tag="Legal"
       title="Accessibility"
-      intro="Our commitment to making this website usable by everyone."
+      intro="Our commitment to making this website accessible to everyone."
       sections={[
-        { title: 'Accessibility commitment', body: [COMPANY.name + ' is committed to ensuring this website is accessible to the widest possible audience, regardless of technology or ability.'] },
-        { title: 'WCAG 2.2 AA target', body: ['We aim to meet the Web Content Accessibility Guidelines version 2.2 at level AA, covering contrast, keyboard navigation, text resizing, focus visibility and clear structure.'] },
-        { title: 'Known limitations', body: ['Some older downloadable documents may not yet be fully accessible. We are working to address this and will provide accessible alternatives on request.'] },
-        { title: 'Feedback and contact', body: [`If you experience any difficulty using this website, contact us at ${COMPANY.email} or ${COMPANY.phone} and we will work to provide the information in a format that suits you.`] },
-        { title: 'Review process', body: ['This statement is reviewed annually, and the website is tested against accessibility standards as part of every major update.'] },
+        { title: 'Our commitment', body: [COMPANY.name + ' wants as many people as possible to be able to use this website. We have built it to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA.', 'This means you should be able to change colours, contrast levels and fonts using your browser; zoom in up to 300% without text going off the screen; navigate most of the site using only a keyboard; use speech recognition software; and listen to most of the site using a screen reader. We also try to make the text as simple as possible to understand.'] },
+        { title: 'How accessible this website is', body: ['We believe this website meets WCAG 2.2 AA. Some older downloadable documents may not be fully accessible, and embedded maps may be hard to use with a screen reader.'] },
+        { title: 'Alternative formats', body: ['If you need information from this site in a different format, such as large print, easy read or audio, contact us at ' + COMPANY.email + ' or on ' + COMPANY.phone + '. We will consider your request and get back to you within 5 working days.'] },
+        { title: 'Reporting problems', body: ['If you find something on this site that is not accessible, or that does not work with your assistive technology, please tell us at ' + COMPANY.email + '. We will look into it and fix it where we can.'] },
+        { title: 'Enforcement', body: ['If you are not happy with how we respond, you can contact the Equality Advisory and Support Service (EASS) at www.equalityadvisoryservice.com.'] },
       ]}
     />
   )

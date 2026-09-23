@@ -21,7 +21,7 @@ export default function Quote() {
 
   return (
     <main>
-      <PageHero tag="Request a quote" title="Request a quote" copy="Tell us about your property and the service you need. The THML team will review your requirements and respond with a clear proposal." />
+      <PageHero tag="Request a quote" title="Request a quote" copy="Tell us about your property and the service you need. We will review your request and contact you within two working days to arrange a visit or provide a quote." />
 
       <section className="py-24 md:py-32">
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
@@ -44,8 +44,8 @@ export default function Quote() {
                 <div className="border-t-2 border-[#1d6151] pt-10">
                   <p className="font-display font-extrabold uppercase text-[26px] md:text-[34px]">Quote request received</p>
                   <p className="mt-6 text-[16px] leading-[1.8] text-[#4a4f4b] max-w-[520px]">
-                    Thank you. Your request has been logged and a member of the THML team will respond within two working days with
-                    next steps.
+                    Thank you. We will review your request and contact you within two working days to arrange a visit or
+                    provide a quote.
                   </p>
                 </div>
               </Reveal>

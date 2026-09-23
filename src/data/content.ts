@@ -32,10 +32,10 @@ export const SERVICES: Service[] = [
     slug: 'property-management',
     title: 'Property Management',
     intro:
-      'Full scope management of residential blocks and portfolios, built around safety, accountability and long term asset care.',
+      'Day-to-day management of housing stock: repairs, maintenance, safety compliance and asset management. We currently manage the homes of Twenty-Fifth Avenue Ltd and can offer the same service to other landlords.',
     image: '/images/ext-fluted-brick.jpg',
     overview:
-      'THML manages residential buildings and portfolios with a structured, compliance first approach. Every managed property is overseen through a single accountable framework covering repairs, planned maintenance, statutory compliance and financial stewardship, so owners and residents always know where their building stands.',
+      'We take the day-to-day work of running housing off your hands. Our property management service covers everything a landlord is responsible for, delivered by a team that manages the homes of one of London\'s established supported housing providers.',
     includes: [
       { title: 'Repairs coordination', body: 'A single point of coordination for reactive repairs, with vetted contractors, clear response standards and full audit records for every instruction.' },
       { title: 'Planned maintenance', body: 'Cyclical and planned works programmes built from condition data, protecting fabric, services and long term asset value.' },
@@ -53,7 +53,7 @@ export const SERVICES: Service[] = [
     slug: 'repairs-and-maintenance',
     title: 'Repairs and Maintenance',
     intro:
-      'Reactive repairs, planned works and preventive maintenance delivered through a controlled contractor network.',
+      'A fast, reliable repairs service keeps residents safe and protects the value of your property. We run a responsive repairs service with agreed response times and our own team of qualified tradespeople, backed by trusted specialist contractors.',
     image: '/images/int-communal-hall.jpg',
     overview:
       'From day to day responsive repairs to multi year planned programmes, THML delivers maintenance that protects residents, buildings and budgets. Every repair is logged, assigned, supervised and closed out with photographic and documentary evidence.',
@@ -73,7 +73,7 @@ export const SERVICES: Service[] = [
     slug: 'fire-safety',
     title: 'Fire Safety',
     intro:
-      'Fire risk assessment support, systems inspection and remedial works with complete documentation.',
+      'Fire safety, electrical, refurbishment and general building works, delivered by qualified tradespeople and managed from start to finish.',
     image: '/images/ext-courtyard.jpg',
     overview:
       'Fire safety sits at the centre of THML’s compliance operation. We support responsible persons with assessment coordination, systems inspection programmes, remedial works delivery and the documentation that evidences a safe, well managed building.',
@@ -93,7 +93,7 @@ export const SERVICES: Service[] = [
     slug: 'electrical-compliance',
     title: 'Electrical Compliance',
     intro:
-      'Testing, inspection, certification and remedial programmes across residential electrical installations.',
+      'Landlords have strict legal duties on fire and electrical safety. We help you meet them and prove it, with qualified engineers, clear certificates and records you can rely on.',
     image: '/images/svc-electrical.jpg',
     overview:
       'THML delivers electrical compliance programmes for residential portfolios, from EICR testing and communal system inspection through to certification and remedial works. Programmes are planned so no certificate lapses and no property falls out of cycle.',
@@ -113,7 +113,7 @@ export const SERVICES: Service[] = [
     slug: 'refurbishment',
     title: 'Refurbishment',
     intro:
-      'Internal improvement works, voids, kitchens, bathrooms and decoration delivered to a managed standard.',
+      'From a single flat to a whole building, we plan and deliver refurbishment projects on time and on budget. We manage the whole job – design, trades, materials, building control and handover – so you deal with one team.',
     image: '/images/int-refurb-split.jpg',
     overview:
       'THML plans and delivers refurbishment works across occupied and void properties. From single void turnarounds to programme based internal improvements, works are specified clearly, procured transparently and finished to a documented standard.',
@@ -133,7 +133,7 @@ export const SERVICES: Service[] = [
     slug: 'property-lettings',
     title: 'Property Lettings',
     intro:
-      'Lettings and management of THML owned properties, with clear availability and a straightforward process.',
+      'We own and let good quality homes across London in our own name. We let to individuals and families, and to organisations looking for accommodation for the people they support.',
     image: '/images/int-living-london.jpg',
     overview:
       'THML owns and lets a growing portfolio of residential properties. Our lettings service handles marketing, enquiries, viewing and onboarding with the same structured approach we bring to management, so every tenancy starts on a sound footing.',

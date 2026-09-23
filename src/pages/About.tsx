@@ -45,9 +45,33 @@ export default function About() {
           </Reveal>
           <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
             {[
-              { t: 'Property Management', d: 'Repairs coordination, planned maintenance, compliance support, asset management, contractor coordination and operational reporting.' },
-              { t: 'Property Ownership and Lettings', d: 'A growing portfolio of THML owned properties, let and managed in house with clear availability and a transparent process.' },
-              { t: 'Contractor Services', d: 'Fire safety, electrical compliance and refurbishment works delivered through accredited contractors and managed standards.' },
+              { t: 'Manage and maintain', d: "We manage and maintain the charity's housing to a high standard." },
+              { t: 'Own and let', d: 'We own and let properties in our own name.' },
+              { t: 'Contractor services', d: 'We provide contractor and maintenance services to other landlords and organisations.' },
+            ].map((x, i) => (
+              <Reveal key={x.t} delay={i * 90}>
+                <div className="border-t border-[#1c1f1d] pt-8">
+                  <h3 className="font-display font-extrabold uppercase tracking-[-0.01em] text-[22px] md:text-[24px]">{x.t}</h3>
+                  <p className="mt-5 text-[15px] leading-[1.8] text-[#4a4f4b]">{x.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our values */}
+      <section className="py-24 md:py-32">
+        <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
+          <Reveal>
+            <Tag label="Our values" />
+          </Reveal>
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {[
+              { t: 'Safe', d: 'Safety comes first in every home we manage and every job we do. We meet our legal duties and we go further where it matters.' },
+              { t: 'Reliable', d: 'We do what we say we will do, when we say we will do it. Clients and residents get clear communication and a named contact.' },
+              { t: 'Respectful', d: 'Many of the homes we look after belong to people who have experienced homelessness. We treat every resident with dignity and every property with care.' },
+              { t: 'Purposeful', d: 'We are a commercial company, but our profits fund a charity. That gives everything we do a purpose beyond the bottom line.' },
             ].map((x, i) => (
               <Reveal key={x.t} delay={i * 90}>
                 <div className="border-t border-[#1c1f1d] pt-8">
@@ -72,20 +96,27 @@ export default function About() {
             <Reveal delay={80}>
               <p className="text-[16px] md:text-[17px] leading-[1.85] text-[#4a4f4b]">
                 {COMPANY.name} is a wholly owned trading subsidiary of {COMPANY.parent}, a registered charity (no. 1123817) and Registered
-                Provider of Social Housing. THML trades commercially and is managed by its own board, while its activities support
-                the charitable objectives of the group.
+                Provider of Social Housing (no. 4652).
+              </p>
+              <p className="mt-6 text-[16px] md:text-[17px] leading-[1.85] text-[#4a4f4b]">
+                We were set up to do three things: manage and maintain the charity's housing to a high standard, own and let
+                properties in our own name, and provide contractor and maintenance services to other landlords and organisations.
+                The profits we make are passed to Twenty-Fifth Avenue Ltd to support its charitable work.
               </p>
             </Reveal>
             <Reveal delay={140}>
               <div className="mt-12 border border-[#dcd8cd] p-8 md:p-12">
                 <p className="font-display font-extrabold uppercase text-[22px] md:text-[28px] tracking-[-0.01em]">{COMPANY.parent}</p>
                 <p className="mt-3 text-[13px] text-[#6e746f]">{COMPANY.parentCharity}</p>
+                <p className="text-[13px] text-[#6e746f]">{COMPANY.parentCompanyNo}</p>
                 <p className="text-[13px] text-[#6e746f]">{COMPANY.parentProvider}</p>
+                <p className="mt-3 text-[13px] text-[#6e746f]">Provides supported accommodation and practical support for people at risk of homelessness across London and Birmingham.</p>
                 <div className="my-8 h-px bg-[#dcd8cd] w-24" />
                 <p className="font-display font-extrabold uppercase text-[18px] md:text-[22px] tracking-[-0.01em] text-[#1d6151]">
                   {COMPANY.name}
                 </p>
-                <p className="mt-3 text-[13px] text-[#6e746f]">Wholly owned trading subsidiary</p>
+                <p className="mt-3 text-[13px] text-[#6e746f]">{COMPANY.companyNo} · Wholly owned trading subsidiary</p>
+                <p className="mt-3 text-[13px] text-[#6e746f]">We manage, maintain and let property and deliver contractor services.</p>
               </div>
             </Reveal>
             <Reveal delay={200}>

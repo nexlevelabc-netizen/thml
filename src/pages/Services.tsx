@@ -6,9 +6,9 @@ export default function Services() {
   return (
     <main>
       <PageHero
-        tag="Services"
-        title="Property services, delivered with structure"
-        copy="Professional property services covering management, maintenance, compliance and refurbishment."
+        tag="Our Services"
+        title="Our Services"
+        copy="We offer a complete property service, from day-to-day management to major refurbishment. Our team works with charities, housing providers, private landlords and public bodies. Whether you need one repair or a full management service, we can help."
       />
       <section className="py-24 md:py-36">
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto space-y-24 md:space-y-36">
@@ -27,7 +27,7 @@ export default function Services() {
                   </h2>
                   <p className="mt-6 text-[16px] leading-[1.8] text-[#4a4f4b] max-w-[460px]">{s.intro}</p>
                   <div className="mt-8">
-                    <TLink to={`/services/${s.slug}`} label="View service" />
+                    <TLink to={`/services/${s.slug}`} label="Find out more" />
                   </div>
                 </div>
               </div>

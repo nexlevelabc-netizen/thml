@@ -17,29 +17,29 @@ export default function Careers() {
       : VACANCIES
   return (
     <main>
-      <PageHero tag="Careers" title="Careers at THML" copy="Explore current opportunities with THML." image="/images/team-office.jpg" />
+      <PageHero tag="Careers" title="Work with purpose" copy="We are a growing property team based in Woolwich. We manage, maintain and let homes across London, and our profits support the charity Twenty-Fifth Avenue Ltd. If you want your skills to make a difference, we would like to hear from you." image="/images/team-office.jpg" />
 
       {/* Why work with THML */}
       <section className="py-24 md:py-32">
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Tag label="Why work with THML" />
+              <Tag label="Why work with us" />
             </Reveal>
           </div>
           <div className="lg:col-span-8 max-w-[760px]">
             <Reveal delay={80}>
               <p className="font-display font-medium text-[22px] md:text-[30px] leading-[1.4] tracking-[-0.01em]">
-                Join a team supporting safe, well managed homes and professional property services.
+                Why work with us
               </p>
             </Reveal>
             <Reveal delay={140}>
-              <p className="mt-8 text-[16px] leading-[1.85] text-[#4a4f4b]">
-                THML is a growing property services company within the 25th Avenue group. Our people manage buildings, deliver
-                works programmes and keep compliance in date — work that directly affects the quality and safety of people’s
-                homes. We offer defined responsibility, professional development and the standards of a structured, accountable
-                organisation.
-              </p>
+              <div className="mt-8 space-y-4">
+                <p className="text-[16px] leading-[1.85] text-[#4a4f4b]">Meaningful work – the homes you look after house people who need a stable start.</p>
+                <p className="text-[16px] leading-[1.85] text-[#4a4f4b]">Variety – repairs, compliance, refurbishment and lettings across a growing portfolio.</p>
+                <p className="text-[16px] leading-[1.85] text-[#4a4f4b]">Training and development – we invest in qualifications and support progression.</p>
+                <p className="text-[16px] leading-[1.85] text-[#4a4f4b]">A supportive team – part of the wider Twenty-Fifth Avenue group.</p>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -81,17 +81,17 @@ export default function Careers() {
           </div>
           <div className="lg:col-span-6 lg:pl-8">
             <Reveal>
-              <Tag label="Speculative applications" />
+              <Tag label="No vacancies?" />
             </Reveal>
             <Reveal delay={80}>
               <h2 className="font-display font-extrabold uppercase leading-[1.05] tracking-[-0.02em] mt-8 text-[28px] md:text-[38px]">
-                Don’t see the right role
+                No vacancies right now
               </h2>
             </Reveal>
             <Reveal delay={140}>
               <p className="mt-6 text-[15px] leading-[1.8] text-[#4a4f4b] max-w-[440px]">
-                We welcome speculative applications from property, compliance and trades professionals. Send your details and we
-                will keep them on file for future vacancies.
+                We do not have any vacancies at the moment, but we are always interested in hearing from experienced
+                tradespeople and property professionals. Send your CV to hr@25thavenue.org and we will keep it on file.
               </p>
             </Reveal>
             <Reveal delay={200}>
@@ -103,7 +103,10 @@ export default function Careers() {
         </div>
       </section>
 
-      <CtaBlock title="Apply to join THML" copy="Review the current vacancies above, or contact the team about working with THML." />
+      <CtaBlock
+        title="How to apply"
+        copy="Click Apply Now on the vacancy you are interested in and send us your CV and a short covering email. Applications go to hr@25thavenue.org. We will acknowledge every application and let you know the outcome. We are an equal opportunities employer. Roles that involve working in residents' homes are subject to a DBS check."
+      />
     </main>
   )
 }

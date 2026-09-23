@@ -8,15 +8,15 @@ export default function Compliance() {
   return (
     <main>
       <PageHero
-        tag="Compliance"
-        title="Compliance and accreditations"
-        copy="Professional standards and supporting documentation presented clearly. Every accreditation is current, referenced and retrievable."
+        tag="Compliance & Accreditations"
+        title="Compliance & Accreditations"
+        copy="We work in people's homes, so getting safety and compliance right is not optional. This page sets out the standards we work to, the accreditations we hold and how we manage health and safety."
       />
 
       <section className="py-24 md:py-32">
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
           <Reveal>
-            <Tag label="Accreditation register" />
+            <Tag label="Our accreditations and memberships" />
           </Reveal>
           <div className="mt-12">
             <div className="hidden md:grid grid-cols-12 gap-4 pb-5 label text-[#6e746f] border-b border-[#1c1f1d]">
@@ -80,15 +80,23 @@ export default function Compliance() {
         <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <Tag label="Certificate downloads" />
+              <Tag label="Our approach to health and safety" />
             </Reveal>
           </div>
           <div className="lg:col-span-8 max-w-[720px]">
             <Reveal delay={80}>
               <p className="text-[16px] md:text-[17px] leading-[1.85] text-[#4a4f4b]">
-                Certificates and policy documents are maintained centrally and issued on request. For copies of any accreditation
-                certificate, insurance document or policy, contact the THML office and the relevant file will be provided.
+                Our directors are responsible for health and safety across the company. We have a written health and safety
+                policy which is reviewed every year, and every member of staff and every contractor we use is expected to follow it.
               </p>
+              <div className="mt-8 space-y-3">
+                <p className="text-[14px] leading-[1.8] text-[#4a4f4b]">Risk assessments and method statements for every job</p>
+                <p className="text-[14px] leading-[1.8] text-[#4a4f4b]">Qualified, competent staff working in residents' homes</p>
+                <p className="text-[14px] leading-[1.8] text-[#4a4f4b]">Only accredited contractors on our approved list, with insurance and qualifications checked</p>
+                <p className="text-[14px] leading-[1.8] text-[#4a4f4b]">Regular training, including asbestos awareness, working at height and fire safety</p>
+                <p className="text-[14px] leading-[1.8] text-[#4a4f4b]">Proper personal protective equipment and safe systems of work</p>
+                <p className="text-[14px] leading-[1.8] text-[#4a4f4b]">Accidents and near misses recorded, investigated and learned from</p>
+              </div>
             </Reveal>
             <Reveal delay={140}>
               <div className="mt-10">
@@ -99,7 +107,10 @@ export default function Compliance() {
         </div>
       </section>
 
-      <CtaBlock title="For further compliance information, contact THML" copy="Our compliance team can provide registers, certificates and inspection records for any building under THML management." />
+      <CtaBlock
+        title="Landlord compliance we deliver"
+        copy="Annual gas safety checks, electrical installation condition reports, fire risk assessments, fire alarm and emergency lighting checks, Legionella risk assessments, asbestos surveys, lift servicing and LOLER inspections, smoke and carbon monoxide alarms, and energy performance certificates — all in date, all recorded."
+      />
     </main>
   )
 }
