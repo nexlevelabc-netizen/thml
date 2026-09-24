@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { Btn, PageHero, Reveal } from '../components/ui'
+import { trpc } from '@/providers/trpc'
 
 const STEPS = ['Your details', 'Service required', 'Property details', 'Project information', 'Review and submit']
 
 export default function Quote() {
   const [step, setStep] = useState(0)
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({
     name: '', company: '', email: '', phone: '',
     service: 'Property Management',
@@ -13,6 +16,35 @@ export default function Quote() {
     description: '', timeframe: 'Within 1 month', additional: '', privacy: false,
   })
   const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }))
+
+  const submitQuote = trpc.content.submitQuote.useMutation()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (step < 4) {
+      setStep(step + 1)
+      return
+    }
+    setSending(true)
+    setError('')
+    try {
+      await submitQuote.mutateAsync({
+        name: form.name,
+        company: form.company || undefined,
+        email: form.email,
+        phone: form.phone || undefined,
+        service: form.service,
+        address: form.address || undefined,
+        description: form.description,
+        timeframe: form.timeframe || undefined,
+      })
+      setSent(true)
+    } catch {
+      setError('Something went wrong. Please try again or call us directly.')
+    } finally {
+      setSending(false)
+    }
+  }
 
   const canNext =
     step === 0 ? form.name && form.email :
@@ -50,13 +82,8 @@ export default function Quote() {
                 </div>
               </Reveal>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  if (step < 4) setStep(step + 1)
-                  else setSent(true)
-                }}
-              >
+              <form onSubmit={handleSubmit}>
+                {error && <p className="mb-6 text-[14px] text-[#a33] border border-[#a33] px-4 py-3">{error}</p>}
                 <Reveal key={step}>
                   {step === 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-9">
@@ -132,7 +159,7 @@ export default function Quote() {
                       Back
                     </button>
                   )}
-                  <Btn label={step === 4 ? 'Submit quote request' : 'Continue'} className={!canNext ? 'opacity-40 pointer-events-none' : ''} />
+                  <Btn label={step === 4 ? (sending ? 'Sending…' : 'Submit quote request') : 'Continue'} className={!canNext ? 'opacity-40 pointer-events-none' : ''} />
                 </div>
               </form>
             )}

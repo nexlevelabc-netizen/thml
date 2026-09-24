@@ -1,10 +1,36 @@
 import { useState } from 'react'
 import { COMPANY } from '../data/content'
 import { Btn, PageHero, Reveal, Tag } from '../components/ui'
+import { trpc } from '@/providers/trpc'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', type: 'Landlord or organisation', subject: '', message: '', privacy: false })
+
+  const submitContact = trpc.content.submitContact.useMutation()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSending(true)
+    setError('')
+    try {
+      await submitContact.mutateAsync({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || undefined,
+        type: form.type,
+        subject: form.subject || undefined,
+        message: form.message,
+      })
+      setSent(true)
+    } catch {
+      setError('Something went wrong. Please try again or call us directly.')
+    } finally {
+      setSending(false)
+    }
+  }
 
   return (
     <main>
@@ -57,11 +83,9 @@ export default function Contact() {
             ) : (
               <form
                 className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-9"
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  setSent(true)
-                }}
+                onSubmit={handleSubmit}
               >
+                {error && <p className="md:col-span-2 text-[14px] text-[#a33] border border-[#a33] px-4 py-3">{error}</p>}
                 <div className="field">
                   <label>Name</label>
                   <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
@@ -103,7 +127,7 @@ export default function Contact() {
                   </span>
                 </label>
                 <div className="md:col-span-2">
-                  <Btn label="Send message" />
+                  <Btn label={sending ? 'Sending…' : 'Send message'} />
                 </div>
               </form>
             )}

@@ -153,7 +153,29 @@ npx tsx db/seed.ts
 
 Or run the same two commands in the Render **Shell** tab of the web service.
 
-### 6. Using the admin panel
+### 6. Email (contact and quote forms)
+
+The contact form, quote form and property enquiry form send submissions to
+`info@thameshousingmanagement.co.uk` by default. To enable actual email
+sending, add these environment variables in Render:
+
+| Key | Value |
+|---|---|
+| `CONTACT_EMAIL` | info@thameshousingmanagement.co.uk |
+| `SMTP_HOST` | your SMTP server (e.g. smtp.gmail.com) |
+| `SMTP_PORT` | 587 |
+| `SMTP_SECURE` | false |
+| `SMTP_USER` | your SMTP username |
+| `SMTP_PASS` | your SMTP password |
+
+For Gmail: enable 2-factor auth, then create an
+[app password](https://myaccount.google.com/apppasswords) and use that as
+`SMTP_PASS`.
+
+Without SMTP credentials, form submissions are logged to the server console
+(the form still works and shows a confirmation to the user).
+
+### 7. Using the admin panel
 
 1. Visit `https://your-render-url/#/login` — the dedicated admin login page.
 2. Sign in with the `ADMIN_USERNAME` / `ADMIN_PASSWORD` you set in Render.

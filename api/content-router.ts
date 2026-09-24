@@ -4,6 +4,7 @@ import { createRouter, publicQuery, adminQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { jobs, news, documents, events, media } from "@db/schema";
 import { s3Enabled, safeExtension, createPresignedUpload, deleteByPublicUrl } from "./storage";
+import { sendContactEmail, sendQuoteEmail, sendPropertyEnquiryEmail } from "./email";
 
 const published = z.enum(["draft", "live"]);
 
@@ -84,6 +85,50 @@ export const contentRouter = createRouter({
   eventMediaPublic: publicQuery.query(() =>
     getDb().select().from(media).where(isNotNull(media.eventId)).orderBy(desc(media.createdAt)),
   ),
+
+  // ------- form submissions (public, sends emails) -------
+  submitContact: publicQuery
+    .input(z.object({
+      name: z.string().min(1),
+      email: z.string().email(),
+      phone: z.string().optional(),
+      type: z.string().min(1),
+      subject: z.string().optional(),
+      message: z.string().min(1),
+    }))
+    .mutation(async ({ input }) => {
+      await sendContactEmail(input);
+      return { success: true };
+    }),
+
+  submitQuote: publicQuery
+    .input(z.object({
+      name: z.string().min(1),
+      company: z.string().optional(),
+      email: z.string().email(),
+      phone: z.string().optional(),
+      service: z.string().min(1),
+      address: z.string().optional(),
+      description: z.string().min(1),
+      timeframe: z.string().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      await sendQuoteEmail(input);
+      return { success: true };
+    }),
+
+  submitPropertyEnquiry: publicQuery
+    .input(z.object({
+      name: z.string().min(1),
+      email: z.string().email(),
+      phone: z.string().optional(),
+      propertyTitle: z.string().min(1),
+      message: z.string().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      await sendPropertyEnquiryEmail(input);
+      return { success: true };
+    }),
 
   // ------- admin lists -------
   jobsAll: adminQuery.query(() => getDb().select().from(jobs).orderBy(desc(jobs.createdAt))),

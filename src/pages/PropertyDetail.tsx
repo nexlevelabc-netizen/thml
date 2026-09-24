@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { PROPERTIES } from '../data/content'
 import { Btn, CtaBlock, ImgReveal, Reveal, Tag, TLink } from '../components/ui'
+import { trpc } from '@/providers/trpc'
 
 export default function PropertyDetail() {
   const { slug } = useParams()
@@ -9,6 +10,29 @@ export default function PropertyDetail() {
   const related = PROPERTIES.filter((p) => p.slug !== property.slug).slice(0, 2)
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
+  const submitEnquiry = trpc.content.submitPropertyEnquiry.useMutation()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSending(true)
+    setError('')
+    try {
+      await submitEnquiry.mutateAsync({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || undefined,
+        propertyTitle: property.title,
+        message: form.message || undefined,
+      })
+      setSent(true)
+    } catch {
+      setError('Something went wrong. Please try again or call us directly.')
+    } finally {
+      setSending(false)
+    }
+  }
 
   return (
     <main>
@@ -121,12 +145,10 @@ export default function PropertyDetail() {
               </Reveal>
             ) : (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  setSent(true)
-                }}
+                onSubmit={handleSubmit}
                 className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8"
               >
+                {error && <p className="md:col-span-2 text-[14px] text-[#a33] border border-[#a33] px-4 py-3">{error}</p>}
                 <div className="field">
                   <label>Name</label>
                   <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
@@ -144,7 +166,7 @@ export default function PropertyDetail() {
                   <textarea rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
                 </div>
                 <div className="md:col-span-2">
-                  <Btn label="Send enquiry" />
+                  <Btn label={sending ? 'Sending…' : 'Send enquiry'} />
                 </div>
               </form>
             )}
