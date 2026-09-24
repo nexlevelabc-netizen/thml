@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { COMPANY, NAV, SERVICES } from '../data/content'
 import { Btn } from './ui'
+import { resetCookieConsent } from './CookieBanner'
 
 export default function Footer() {
   return (
@@ -95,7 +96,6 @@ export default function Footer() {
           {[
             ['Privacy Policy', '/privacy'],
             ['Cookie Policy', '/cookies'],
-            ['Cookie settings', '/cookies'],
             ['Terms of Use', '/terms'],
             ['Complaints Procedure', '/complaints'],
             ['Modern Slavery Statement', '/modern-slavery'],
@@ -105,6 +105,13 @@ export default function Footer() {
               {label}
             </Link>
           ))}
+          <button
+            type="button"
+            onClick={resetCookieConsent}
+            className="text-[11px] tracking-[0.14em] uppercase text-[#a3a099] hover:text-[#f7f5f0] transition-colors"
+          >
+            Cookie settings
+          </button>
         </div>
         <p className="text-[11px] tracking-[0.08em] text-[#6e746f] uppercase">© 2022 {COMPANY.name}. All rights reserved.</p>
       </div>
