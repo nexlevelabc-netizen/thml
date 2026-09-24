@@ -29,7 +29,8 @@ export async function sendContactEmail(data: {
   subject?: string;
   message: string;
 }) {
-  const transporter = getTransporter();
+  try {
+    const transporter = getTransporter();
 
   const html = `
     <h2>New contact form submission</h2>
@@ -55,21 +56,33 @@ Message: ${data.message}
   `;
 
   if (transporter) {
-    await transporter.sendMail({
-      from: `"THML Website" <${process.env.SMTP_USER}>`,
-      to: TO_EMAIL,
-      replyTo: data.email,
-      subject: `Contact form: ${data.name}`,
-      text,
-      html,
-    });
-    return { sent: true };
+    try {
+      await transporter.sendMail({
+        from: `"THML Website" <${process.env.SMTP_USER}>`,
+        to: TO_EMAIL,
+        replyTo: data.email,
+        subject: `Contact form: ${data.name}`,
+        text,
+        html,
+      });
+      return { sent: true };
+    } catch (err) {
+      console.error("SMTP send failed:", err);
+      // Fall through to logging
+    }
   }
 
-  // No SMTP configured — log and return success (form still works, email logged)
-  console.log("Contact form submission (no SMTP configured):");
+  // No SMTP or send failed — log and return success (form still works)
+  console.log("Contact form submission (logged, not emailed):");
   console.log(text);
   return { sent: false, logged: true };
+  } catch (err) {
+    console.error("Contact email error:", err);
+    // Still return success so the user sees confirmation
+    console.log("Contact form submission (error fallback):");
+    console.log(JSON.stringify(data, null, 2));
+    return { sent: false, logged: true, error: true };
+  }
 }
 
 export async function sendQuoteEmail(data: {
@@ -82,7 +95,8 @@ export async function sendQuoteEmail(data: {
   description: string;
   timeframe?: string;
 }) {
-  const transporter = getTransporter();
+  try {
+    const transporter = getTransporter();
 
   const html = `
     <h2>New quote request</h2>
@@ -112,20 +126,29 @@ Description: ${data.description}
   `;
 
   if (transporter) {
-    await transporter.sendMail({
-      from: `"THML Website" <${process.env.SMTP_USER}>`,
-      to: TO_EMAIL,
-      replyTo: data.email,
-      subject: `Quote request: ${data.service} — ${data.name}`,
-      text,
-      html,
-    });
-    return { sent: true };
+    try {
+      await transporter.sendMail({
+        from: `"THML Website" <${process.env.SMTP_USER}>`,
+        to: TO_EMAIL,
+        replyTo: data.email,
+        subject: `Quote request: ${data.service} — ${data.name}`,
+        text,
+        html,
+      });
+      return { sent: true };
+    } catch (err) {
+      console.error("SMTP send failed:", err);
+    }
   }
 
-  console.log("Quote request (no SMTP configured):");
+  console.log("Quote request (logged, not emailed):");
   console.log(text);
   return { sent: false, logged: true };
+  } catch (err) {
+    console.error("Quote email error:", err);
+    console.log(JSON.stringify(data, null, 2));
+    return { sent: false, logged: true, error: true };
+  }
 }
 
 export async function sendPropertyEnquiryEmail(data: {
@@ -135,7 +158,8 @@ export async function sendPropertyEnquiryEmail(data: {
   propertyTitle: string;
   message?: string;
 }) {
-  const transporter = getTransporter();
+  try {
+    const transporter = getTransporter();
 
   const html = `
     <h2>Property enquiry</h2>
@@ -159,18 +183,27 @@ ${data.message ? `Message: ${data.message}` : ""}
   `;
 
   if (transporter) {
-    await transporter.sendMail({
-      from: `"THML Website" <${process.env.SMTP_USER}>`,
-      to: TO_EMAIL,
-      replyTo: data.email,
-      subject: `Property enquiry: ${data.propertyTitle} — ${data.name}`,
-      text,
-      html,
-    });
-    return { sent: true };
+    try {
+      await transporter.sendMail({
+        from: `"THML Website" <${process.env.SMTP_USER}>`,
+        to: TO_EMAIL,
+        replyTo: data.email,
+        subject: `Property enquiry: ${data.propertyTitle} — ${data.name}`,
+        text,
+        html,
+      });
+      return { sent: true };
+    } catch (err) {
+      console.error("SMTP send failed:", err);
+    }
   }
 
-  console.log("Property enquiry (no SMTP configured):");
+  console.log("Property enquiry (logged, not emailed):");
   console.log(text);
   return { sent: false, logged: true };
+  } catch (err) {
+    console.error("Property enquiry email error:", err);
+    console.log(JSON.stringify(data, null, 2));
+    return { sent: false, logged: true, error: true };
+  }
 }
