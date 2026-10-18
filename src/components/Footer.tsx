@@ -77,7 +77,10 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          
+         <p className="label text-[#6e746f]">Documents</p>
+          <div className="mt-6 flex flex-col gap-3 text-[13px] text-[#c9cdc7]">
+            <p>Policies, certificates and reports are available through the documents section.</p>
+            <Link to="/compliance" className="tlink text-[#f7f5f0] w-fit mt-1">View documents</Link> 
           </div>
         </div>
       </div>
