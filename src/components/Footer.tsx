@@ -76,13 +76,6 @@ export default function Footer() {
             <p className="text-[#a3a099] text-[12px] leading-[1.6] mt-1">{COMPANY.office}</p>
           </div>
         </div>
-        <div>
-         <p className="label text-[#6e746f]">Documents</p>
-          <div className="mt-6 flex flex-col gap-3 text-[13px] text-[#c9cdc7]">
-            <p>Policies, certificates and reports are available through the documents section.</p>
-            <Link to="/compliance" className="tlink text-[#f7f5f0] w-fit mt-1">View documents</Link> 
-          </div>
-        </div>
       </div>
 
       {/* legal strip */}

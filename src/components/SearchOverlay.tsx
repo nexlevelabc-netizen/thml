@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ACCREDITATIONS, NEWS, PROPERTIES, SERVICES, VACANCIES } from '../data/content'
+import { NEWS, PROPERTIES, SERVICES, VACANCIES } from '../data/content'
 
 const SUGGESTED = ['Fire Safety', 'Electrical Compliance', 'Available Properties', 'Current Vacancies', 'Refurbishment', 'Certificates']
 
@@ -18,7 +18,6 @@ const INDEX: ResultItem[] = [
   { group: 'Documents', label: 'Complaints policy', to: '/complaints' },
   { group: 'Documents', label: 'Privacy notice', to: '/privacy' },
   { group: 'Documents', label: 'Certificate downloads', to: '/compliance' },
-  ...ACCREDITATIONS.map((a) => ({ group: 'Compliance', label: a.name, to: '/compliance' })),
 ]
 
 export default function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ACCREDITATIONS, COMPANY, NEWS, PROPERTIES, SERVICES } from '../data/content'
+import { COMPANY, NEWS, PROPERTIES, SERVICES } from '../data/content'
 import { Btn, CtaBlock, ImgReveal, Reveal, Tag, TLink } from '../components/ui'
 import { trpc } from '@/providers/trpc'
 
@@ -277,47 +277,6 @@ export default function Home() {
                   <p className="mt-1 text-[13px] text-[#6e746f]">{p.type}</p>
                   <p className="tlink mt-5 prop-arrow inline-block">View property</p>
                 </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ 7. COMPLIANCE ============ */}
-      <section className="py-24 md:py-36 bg-[#ece9e1]">
-        <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14">
-          <div className="lg:col-span-5">
-            <Reveal>
-              <Tag label="Compliance and accreditations" />
-            </Reveal>
-            <Reveal delay={80}>
-              <h2 className="font-display font-extrabold uppercase leading-[1.02] tracking-[-0.02em] mt-8 text-[32px] md:text-[44px]">
-                Professional standards, presented clearly
-              </h2>
-            </Reveal>
-            <Reveal delay={140}>
-              <p className="mt-7 text-[16px] leading-[1.8] text-[#4a4f4b] max-w-[460px]">
-                THML maintains current accreditation across the trades we deliver. Supporting documentation is available for every
-                entry in the register.
-              </p>
-            </Reveal>
-            <Reveal delay={200}>
-              <div className="mt-10">
-                <Btn to="/compliance" label="View compliance register" variant="outline" />
-              </div>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-7">
-            {ACCREDITATIONS.map((a, i) => (
-              <Reveal key={a.name} delay={i * 50}>
-                <div className="grid grid-cols-12 gap-4 items-baseline py-5 border-b border-[#dcd8cd] first:border-t">
-                  <p className="col-span-12 md:col-span-5 font-display font-bold text-[17px]">{a.name}</p>
-                  <p className="col-span-6 md:col-span-3 text-[13px] text-[#6e746f]">{a.ref}</p>
-                  <p className="col-span-6 md:col-span-2 text-[13px] text-[#1d6151]">{a.status}</p>
-                  <p className="col-span-12 md:col-span-2 md:text-right">
-                    <TLink to="/compliance" label="Certificate" className="!text-[11px]" />
-                  </p>
-                </div>
               </Reveal>
             ))}
           </div>

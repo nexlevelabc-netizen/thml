@@ -381,22 +381,6 @@ export const VACANCIES: Vacancy[] = [
   },
 ]
 
-export const ACCREDITATIONS = [
-  { name: 'NICEIC Approved Contractor', ref: 'Ref 614852000', status: 'Current', doc: 'Certificate available on request' },
-  { name: 'Gas Safe Register', ref: 'Reg 582417', status: 'Current', doc: 'Certificate available on request' },
-  { name: 'BAFE Fire Safety Register', ref: 'Ref 104932', status: 'Current', doc: 'Certificate available on request' },
-  { name: 'CHAS Accredited Contractor', ref: 'Ref 00834712', status: 'Current', doc: 'Certificate available on request' },
-  { name: 'Constructionline Gold Member', ref: 'Ref 99301', status: 'Current', doc: 'Certificate available on request' },
-  { name: 'ICO Data Protection Registration', ref: 'Reg ZB402318', status: 'Current', doc: 'Certificate available on request' },
-]
-
-export const BOARD = [
-  { name: 'Amara Osei', role: 'Chair', bio: 'A chartered surveyor with over twenty years in housing and asset management, Amara chairs the THML board and oversees governance and long term strategy.' },
-  { name: 'Daniel Whitfield', role: 'Managing Director', bio: 'Daniel leads THML’s operations, drawing on a background in property services delivery for registered providers across London and the South East.' },
-  { name: 'Priya Raman', role: 'Finance Director', bio: 'Priya is responsible for financial stewardship, reporting and the commercial discipline that underpins THML’s trading activity within the group.' },
-  { name: 'Marcus Adeyemi', role: 'Non Executive Director', bio: 'Marcus brings expertise in building safety and compliance, supporting the board’s oversight of THML’s fire safety and electrical programmes.' },
-]
-
 export const NAV = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
