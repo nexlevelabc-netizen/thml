@@ -113,7 +113,7 @@ export default function Footer() {
             Cookie settings
           </button>
         </div>
-        <p className="text-[11px] tracking-[0.08em] text-[#6e746f] uppercase">© 2022 {COMPANY.name}. All rights reserved.</p>
+        <p className="text-[11px] tracking-[0.08em] text-[#6e746f] uppercase">© 2026 {COMPANY.name}. All rights reserved.</p>
       </div>
     </footer>
   )
