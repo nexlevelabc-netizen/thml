@@ -1,4 +1,4 @@
-import { BOARD, COMPANY } from '../data/content'
+import { COMPANY } from '../data/content'
 import { Btn, CtaBlock, PageHero, Reveal, Tag } from '../components/ui'
 
 export default function About() {
@@ -127,31 +127,6 @@ export default function About() {
                 <Btn to={COMPANY.parentUrl} label="Visit www.25thavenue.org" variant="outline" />
               </div>
             </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Board */}
-      <section className="py-24 md:py-36 bg-[#ece9e1]">
-        <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
-          <Reveal>
-            <Tag label="Board and leadership" />
-          </Reveal>
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-            {BOARD.map((b, i) => (
-              <Reveal key={b.name} delay={i * 80}>
-                <div>
-                  <div className="aspect-[3/4] bg-[#1a1a19] flex items-center justify-center">
-                    <span className="font-display font-extrabold text-[64px] text-[#2b7a66] tracking-[-0.02em]">
-                      {b.name.split(' ').map((n) => n[0]).join('')}
-                    </span>
-                  </div>
-                  <h3 className="font-display font-bold text-[19px] mt-6">{b.name}</h3>
-                  <p className="label text-[#1d6151] mt-2">{b.role}</p>
-                  <p className="mt-4 text-[14px] leading-[1.75] text-[#4a4f4b]">{b.bio}</p>
-                </div>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>

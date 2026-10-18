@@ -1,4 +1,3 @@
-import { ACCREDITATIONS } from '../data/content'
 import { CtaBlock, PageHero, Reveal, Tag, TLink } from '../components/ui'
 import { trpc } from '@/providers/trpc'
 
@@ -8,38 +7,10 @@ export default function Compliance() {
   return (
     <main>
       <PageHero
-        tag="Compliance & Accreditations"
-        title="Compliance & Accreditations"
-        copy="We work in people's homes, so getting safety and compliance right is not optional. This page sets out the standards we work to, the accreditations we hold and how we manage health and safety."
+        tag="Compliance"
+        title="Compliance"
+        copy="We work in people's homes, so getting safety and compliance right is not optional. This page sets out the standards we work to and how we manage health and safety."
       />
-
-      <section className="py-24 md:py-32">
-        <div className="px-6 md:px-14 lg:px-20 max-w-[1560px] mx-auto">
-          <Reveal>
-            <Tag label="Our accreditations and memberships" />
-          </Reveal>
-          <div className="mt-12">
-            <div className="hidden md:grid grid-cols-12 gap-4 pb-5 label text-[#6e746f] border-b border-[#1c1f1d]">
-              <p className="col-span-5">Accreditation</p>
-              <p className="col-span-3">Reference</p>
-              <p className="col-span-2">Status</p>
-              <p className="col-span-2 text-right">Document</p>
-            </div>
-            {ACCREDITATIONS.map((a, i) => (
-              <Reveal key={a.name} delay={i * 50}>
-                <div className="grid grid-cols-12 gap-4 items-baseline py-7 border-b border-[#dcd8cd]">
-                  <p className="col-span-12 md:col-span-5 font-display font-bold text-[19px] md:text-[21px]">{a.name}</p>
-                  <p className="col-span-6 md:col-span-3 text-[14px] text-[#6e746f]">{a.ref}</p>
-                  <p className="col-span-6 md:col-span-2 text-[14px] text-[#1d6151]">{a.status}</p>
-                  <p className="col-span-12 md:col-span-2 md:text-right">
-                    <TLink to="/contact" label="Download" className="!text-[11px]" />
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {docs.length > 0 && (
         <section className="py-24 md:py-32">
